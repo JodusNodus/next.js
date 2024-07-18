@@ -205,7 +205,7 @@ export class IncrementalCache implements IncrementalCacheType {
     const { initialRevalidateSeconds } = this.prerenderManifest.routes[
       toRoute(pathname)
     ] || {
-      initialRevalidateSeconds: 1,
+      initialRevalidateSeconds: 86400,
     }
     const revalidateAfter =
       typeof initialRevalidateSeconds === 'number'
