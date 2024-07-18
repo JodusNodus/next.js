@@ -1,13 +1,16 @@
 {
-  "name": "next",
+  "name": "@jodusnodus/next",
   "version": "14.2.5",
   "description": "The React Framework",
   "main": "./dist/server/next.js",
   "license": "MIT",
-  "repository": "vercel/next.js",
+  "repository": "jodusnodus/next.js",
   "bugs": "https://github.com/vercel/next.js/issues",
   "homepage": "https://nextjs.org",
   "types": "index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist",
     "app.js",

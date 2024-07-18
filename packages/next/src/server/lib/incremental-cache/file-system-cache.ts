@@ -48,7 +48,7 @@ export default class FileSystemCache implements CacheHandler {
     this.pagesDir = !!ctx._pagesDir
     this.revalidatedTags = ctx.revalidatedTags
     this.experimental = ctx.experimental
-    this.debug = !!process.env.NEXT_PRIVATE_DEBUG_CACHE
+    this.debug = true
 
     if (ctx.maxMemoryCacheSize && !memoryCache) {
       if (this.debug) {
@@ -269,6 +269,7 @@ export default class FileSystemCache implements CacheHandler {
           memoryCache?.set(key, data)
         }
       } catch (_) {
+        console.info('FileSystemCache', 'noDataOnDisk', key)
         // unable to get data from disk
       }
     }
@@ -291,6 +292,7 @@ export default class FileSystemCache implements CacheHandler {
               (data?.lastModified || Date.now())
           )
         })
+        console.info('FileSystemCache', 'get:tagManifestCheck', key, isStale)
 
         // we trigger a blocking validation if an ISR page
         // had a tag revalidated, if we want to be a background
@@ -363,6 +365,7 @@ export default class FileSystemCache implements CacheHandler {
         `${key}.html`,
         isAppPath ? 'app' : 'pages'
       )
+      console.info('FileSystemCache', 'set', key)
       await this.fs.mkdir(path.dirname(htmlPath))
       await this.fs.writeFile(htmlPath, data.html)
 
