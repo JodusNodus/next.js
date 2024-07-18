@@ -1551,7 +1551,7 @@ importers:
         version: 1.0.20
     devDependencies:
       next:
-        specifier: 14.2.6
+        specifier: 14.2.7
         version: link:../next
       outdent:
         specifier: 0.8.0
